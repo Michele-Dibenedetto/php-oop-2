@@ -1,0 +1,10 @@
+nome tabella: USERS
+
+id		INT		AI	
+nome		VARCHAR(50)
+cognome		VARCHAR(50)
+eta		INT
+email		VARCHAR(50)
+username	VARCHAR(50)
+password	VARCHAR(50)
+tipo_user	VARCHAR(50)
