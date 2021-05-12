@@ -1,19 +1,18 @@
 <?php
+require_once ("nominative.php");
 class Users {
+    use Nominative;
     public $id;
-    public $name;
-    public $surname;
     private $eta;
     private $email;
     public $username;
     private $password;
-    public $tipo_user;
+    private $tipo_user;
 
-    public function __construct($_name, $_surname, $_tipo_user, $_id)
+    public function __construct($_name, $_surname, $_id)
     {
         $this->name = $_name;
         $this->surname = $_surname;
-        $this->tipo_user = $_tipo_user;
         $this->id = $_id;
     }
 
@@ -48,14 +47,25 @@ class Users {
     // SET E GET PASSWORD
     public function setPassword($_password) {
         trim($_password);
-        if (strlen($_password) > 3) {
-            $this->password = $_password;
+        if (strlen($_password) < 3) {
+            throw new Exception("la password deve avere un minimo di 3 caratteri");
         }
+
+        $this->password = $_password;
     }
 
     public function getPassword() {
         return $this->password;
     }
 
+
+    // SET E GET TIPO USER
+    public function setUser() {
+        $this->tipo_user = "utente";
+    }
+
+    public function getUser() {
+        return $this->tipo_user;
+    }
 
 }
